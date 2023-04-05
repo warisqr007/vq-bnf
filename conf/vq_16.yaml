@@ -1,0 +1,25 @@
+data:
+  train_fid_list: "/mnt/data1/waris/repo/vq-bnf/train.txt"
+  dev_fid_list: "/mnt/data1/waris/repo/vc-vq-prosody/dev.txt" 
+  arctic_ppg_dir: "/mnt/data1/waris/datasets/data/arctic_dataset/all_data_for_ac_vc_train/SV2TTS/synthesizer/ppgs"
+  #pretrain_model_file: /mnt/data1/waris/repo/vc-vq-prosody/ckpt/transformer-vc-vq-dr/best_loss_step_430000.pth
+
+hparas:
+  batch_size: 64
+  valid_step: 5000
+  max_step: 100000
+  optimizer: 'Lamb'
+  lr: 0.001
+  eps: 0
+  weight_decay: 0
+  lr_scheduler:    # "fixed", "warmup"
+
+model_name: "vector-quantizer"
+model:
+  # commitment cost
+  commitment_cost: 1 #VQVAE paper -> 0.1 to 2 (0.25 in general)
+  codebook_size: 16
+  codebook_embed_size: 256
+  use_cosine_sim: true
+  kmeans_iters: 50
+  
